@@ -48,24 +48,6 @@ export const searchMoviesAsync = createAsyncThunk(
   }
 );
 
-// // Save movie async
-// export const saveMoviesAsync = createAsyncThunk(
-//   'movie/save',
-//   async (movie: Movies) => {
-//     movie.endDate = !movie.endDate ? undefined : movie.endDate;
-//     const response = movie.id ?
-//       await updateMovies(movie) : await saveMovies(movie);
-
-//     return response.data;
-//   }
-// );
-
-// // Delete movie async
-// export const deleteMoviesAsync = createAsyncThunk(
-//   'movie/delete',
-//   async (id: number) => await deleteMovies(id)
-// );
-
 export const moviesSlice = createSlice({
   name: 'movies',
   initialState: moviesInitialState,
@@ -111,29 +93,6 @@ export const selectMovie = (state: RootState) => state.movies.current;
 //Select movie list
 export const selectMovies = (state: RootState) => state.movies.list;
 
-// // Save or update movie thunk
-// export const setMovies = (current: Movies): AppThunk => (
-//   dispatch
-// ) => {
-//   dispatch(saveMoviesAsync(current));
-//   dispatch(getMoviessAsync());
-// };
-
-// // Remove movie thunk
-// export const removeMovies = (id: number): AppThunk => (
-//   dispatch
-// ) => {
-//   dispatch(deleteMoviesAsync(id));
-//   dispatch(removeFromList(id));
-// };
-
-// export const loadMoviess = (): AppThunk => (
-//   dispatch
-// ) => {
-//   dispatch(getMoviessAsync());
-// };
-
-
 export const searchMoviesThunk = (searchTerm: string): AppThunk => (
   dispatch
 ) => {
@@ -159,4 +118,3 @@ function getResultsFrom(response: any): Movie[] {
     } as Movie;
   });
 }
-
